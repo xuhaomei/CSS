@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <!-- -webkit-line-clamp -->
+        <h3><a name="webkit-line-clamp">-webkit-line-clamp</a></h3>
+        <span class="webkit-line-clamp">
+            2021-01-05 00:00:00~2021-01-15 23:59:59
+        </span>
+
+        <!-- 伪类:active -->
+        <h3><a name="pseudo-class-active">:active</a></h3>
+        <p class="pseudo-class-active-p">
+            This paragraph contains a link:
+            <a href="#" class="pseudo-class-active-a">This link will turn red while you click on it.</a>
+            The paragraph will get a gray background while you click on it or the link.
+        </p>
+        <form class="pseudo-class-active-form">
+            <label for="my-button">My button: </label>
+            <button id="my-button" type="button">Try Clicking Me or My Label!</button>
+        </form>
+
+        <!-- additive-symbols -->
+        <h3><a name="additive-symbols">additive-symbols</a></h3>
+        <ul class="additive-symbols">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+        </ul>
+
+        <!-- replaced element -->
+        <h3><a name="replaced-element">replaced element</a></h3>
+        <img src="../assets/my-image.jpg" class="replaced-element-img" />
+
+        <!-- align-content -->
+        <h3><a name="align-content">align-content</a></h3>
+        <div class="align-content-container">
+            <div class="align-content-item"></div>
+            <div class="align-content-item"></div>
+            <div class="align-content-item"></div>
+            <div class="align-content-item"></div>
+        </div>
+
+        <!-- animation-fill-mode -->
+        <h3><a name="animation-fill-mode">animation-fill-mode</a></h3>
+        <div class="animation-container">
+            <div class="animation-item"></div>
+        </div>
+
+        <!-- custom-properties -->
+        <h3><a name="custom-properties">custom-properties</a></h3>
+        <div class="custom-properties">
+            <div class="custom-properties-item">
+                This paragraph is using custom-properties.
+            </div>
+        </div>
+
+        <!-- :any-link -->
+        <h3><a name="any-link">any-link</a></h3>
+        <div class="any-link">
+            <!--
+                Attributes:
+                    *download: Prompts the user to save the URL instead of navigating to it. Can be used with or without
+                        a value: 
+                            ** Without a value, the browser will suggest a filename/extension, generated from various sources:
+                                - The Content-Disposition HTTP header
+                                - The final segment in the URL path
+                                - The media type (from the Content-type header, the start of a data: URL, or Blob.type for a blob: URL)
+                            ** Defining a value suggests it as the filename. / and \ characters are converted to underscores (_). Filesystems
+                            may forbid other characters in filenames, so browser will adjust the suggested name if necessary.
+                        !Notes!
+                            ** download only works form same-origin URLs, or the blob: and data: schemes.
+                            ** If the Content-Disposition header has different information from the download attribute, resulting
+                               behavior may differ:
+                                 - If the header specifies a filename, it takes priority over a filename specified in the download attribute.
+                                 - If the header specifies a disposition of inline, Chrome, and Firefox 82 and later, priorities the attribute
+                                 and treat it as a download. Firefox versions before 82 prioritize the header and display the content inline.
+            -->
+            <a class="any-link-a" href="tel:13212312322">link-tel</a>
+            <a class="any-link-a" href="mailto:2656593403@qq.com" hreflang="en">link-email</a>
+
+            <!--
+                The HTML <map> element is used with <area> elements to define an image map (a clickable link area).
+                The name attribute gives the map a name so that it can be referenced. If the id attribute is also specified,
+                both attributes must have the same value. 
+            -->
+            <!--
+                The HTML <area> element defines an area inside a image map that has predefined clickable areas. An image map allows
+                geometric areas in an image to be associated with hypertext link.
+                The element is used only within a <map> element.
+                    * alt: This attribute is used only if the href attribute is used.
+                    * coords: The coords attribute details the coordinates of the shape attribute in size, shape, and placement of an <area>.
+                    * download: This attribute, if present, indicates that the author intends the hyperlink to be used for downloading a resource.
+                        Prompts the user to save the linked URL instead of navigating to it. Can be used with or without a value:
+                            * Without a value, the browser will suggest a filename/extension, generated from various sources:
+                                * The Content-Disposition HTTP header
+                                * The final segment in the URL path
+                                * The media type (from the Content-Type header, the start of a data: URL, or Blob.type for a blob: URL)
+                            * Defining a value suggests it 
+            -->
+            <map name="infographic">
+                <area shape="poly" coords="130,147,200,107,254,219,130,228"
+                      href="https://developer.mozilla.org/docs/Web/HTML"
+                      target="_blank" alt="HTML" />
+                <area shape="poly" coords="130,147,130,228,6,219,59,107"
+                      href="https://developer.mozilla.org/docs/Web/CSS"
+                      target="_blank" alt="CSS" />
+                <area shape="poly" coords="130,147,200,107,130,4,59,107"
+                      href="https://developer.mozilla.org/docs/Web/JavaScript"
+                      target="_blank" alt="JavaScript" />
+            </map>
+            <img class="any-link-img" usemap="#infographic" src="../assets/mdn-info2.png" alt="MDN infographic" />
+        </div>
+        
+        <!-- appearance -->
+        <h3><a name="appearance">appearance</a></h3>
+        <button class="appearance-button">element</button>
+        
+        <!-- aspect-ratio -->
+        <h3><a name="aspect-ratio">aspect-ratio</a></h3>
+        <div class="aspect-ratio-div">element</div>
+
+        <!-- attr() -->
+        <h3><a name="attr-fn">attr()</a></h3>
+        <p class="attr-fn" data-pre="hello">world</p>
+
+        <!-- ::backdrop -->
+        <h3><a name="backdrop">::backdrop</a></h3>
+        <!--
+            The HTML <dialog> element represents a dialog box or other interactive component, such as a dismissible
+            alert, inspector, or subwindow.
+            Attributes:
+                !Notes! The tabindex must not be used on the <dialog> element.
+                * open: Indicates that the dialog is active and can be interacted with. When the open is not set, the
+                  dialog shouldn't be shown to the user.
+            Usage notes:
+                * <form> elements can close a dialog if they have attribute method="dialog". When such a form is submitted,
+                  the dialog closes with its returnValue property set to the value of the button that was used to submit
+                  the form.
+                * The ::backdrop CSS pseudo element can be used to style behind a <dialog> element when the dialog is displayed
+                  with HTMLDialogElement.showModel(). For example, to dim unreachable content behind the model dialog. 
+        -->
+        <dialog open>Greetings, one and all!</dialog>
+        <dialog id="favDialog">
+            <form method="dialog">
+                <p>
+                    <label>
+                        Favorite animal:
+                        <select>
+                            <option></option>
+                            <option>Brine shrimp</option>
+                            <option>Red panda</option>
+                            <option>Spider monkey</option>
+                        </select>
+                    </label>
+                </p>
+                <menu>
+                    <button value="cancel">Cancel</button>
+                    <button value="default" id="confirmBtn">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+        <menu>
+            <button id="updateDetails">Update Details</button>
+        </menu>
+        <output aria-live="polite"></output>
+
+        <!-- backdrop-filter -->
+        <h3><a name="backdrop-filter">backdrop-filter</a></h3>
+        <div class="backdrop-container">
+            <div class="backdrop-content">Beautiful strawberry!</div>
+        </div>
+
+        <!-- backface-visibility -->
+        <h3><a name="backface-visibility">backface-visibility</a></h3>
+        <table class="backface-visibility">
+            <tr>
+                <th><code>backface-visibility: visible;</code></th>
+                <th><code>backface-visibility: hidden;</code></th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="cube showbf">
+                            <div class="face front">1</div>
+                            <div class="face back">2</div>
+                            <div class="face left">3</div>
+                            <div class="face right">4</div>
+                            <div class="face top">5</div>
+                            <div class="face bottom">6</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="container">
+                        <div class="cube hidebf">
+                            <div class="face front">1</div>
+                            <div class="face back">2</div>
+                            <div class="face left">3</div>
+                            <div class="face right">4</div>
+                            <div class="face top">5</div>
+                            <div class="face bottom">6</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Since all faces are partially transparent,<br/>
+                        the back faces (2, 4, 5) are visible<br/>
+                        through the front faces (1, 3, 6).</p>
+                </td>
+                <td>
+                    <p>The three back faces (2, 4, 5) are<br/>
+                        hidden.</p>
+                </td>
+            </tr>
+        </table>
+
+        <!-- background -->
+        <h3><a name="background">background</a></h3>
+        <div class="background-container">
+            <div class="background-content">
+                <p class="background-text">
+                    There were doors all round the hall, but they were all locked; and when
+                    Alice had been all the way down one side and up the other, trying every
+                    door, she walked sadly down the middle, wondering how she was ever to
+                    get out again.
+
+                    Suddenly she came upon a little three-legged table, all made of solid
+                    glass; there was nothing on it except a tiny golden key, and Alice's
+                    first thought was that it might belong to one of the doors of the hall;
+                    but, alas! either the locks were too large, or the key was too small,
+                    but at any rate it would not open any of them. However, on the second
+                    time round, she came upon a low curtain she had not noticed before, and
+                    behind it was a little door about fifteen inches high: she tried the
+                    little golden key in the lock, and to her great delight it fitted!
+                </p>
+            </div>
+        </div>
+
+
+        <script src="../js/test.js"></script>
+    </body>
+</html>
