@@ -353,20 +353,113 @@
     height: 300px;
     padding: 16px;
     overflow: auto;
+
+    /* 
+     * The background images are drawn on stacking context layers on top of each other. The
+       first layer specified is drawn as if it is closest to the user.
+       The borders of the element are then drawn on top of them, and the background-color is
+       drawn beneath them. How the images are drawn relative to the box and its borders is
+       defined by the background-clip and background-origin CSS properties.
+    */
     background-image: url(../assets/mdn-info2.png), url(../assets/strawberry.jpg);
+
+    /*
+     * Values: 
+        - contain: Scales the image as large as possible within its container without cropping
+          or stretching the image. If the container is larger than the image, this will result
+          in image tiling, unless the background-repeat property is set to no-repeat.
+        - cover: Scales the image as large as possible to fill the container, stretching the
+          image if necessary. If the proportions of the image differ from the element, it is
+          cropped either vertically or horizontally so that no empty space remains.
+        - auto: Scales the background image in the corresponding direction such that its
+          intrinsic proportions are maintained.
+        - <length>: Stretches the image in the corresponding dimension to the specified length.
+          Negative values are not allowed.
+        - <percentage>: Stretches the image in the corresponding dimension to the specified
+          percentage of the background positioning area. The background positioning area is
+          determined by the value of background-origin (by default, the padding box). However,
+          if the background's background-attachment value is fixed, the positioning area is
+          instead the entire viewport. Negative values are not allowed.
+    */
     background-size: contain, cover;
-    background-position: center;
+
+    /* 
+     * The background-position CSS property sets the initial position for each background image.
+       The position is relative to the layer set by background-origin.
+
+       A position can be defined using one to four values. If two non-keyword values are used, the
+       first value represents the horizontal position and the second represents the vehicle position.
+       If only one value is specified, the second value is assumed to be center. If three or four values
+       are used, the length-percentage values are offsets for the preceding keyword value(s).
+
+        * 1-value syntax: the value may be:
+            - The keyword value center, which centers the image.
+            - One of the keyword values top, left, bottom, right. This specifies an edge against which to
+                place the item. The other dimension is then set to 50%, so the item is placed in the middle
+                of the edge specified.
+            - A <length> or <percentage>. This specifies the X coordinate relative to the left edge, with
+                the Y coordinate set to 50%.
+    */
+    background-position: bottom 50% right 50%;
+
+    /*
+     * By default, the repeated images are clipped to the size of the element, but they can be scaled to
+       fit (using round) or evenly distributed from end to end(using space).
+       In the two-value syntax, the first value represents the horizontal repetition behavior and the second
+       value represents the vehicle behavior.
+        * Values:
+            - repeat: The image is repeated as much as needed to cover the whole background image painting
+              area. The last image will be clipped if it doesn't fit.
+            - space: The image is repeated as much ad possible without clipping. The first and last images
+              are pinned to either side of the element, and whitespace is distributed evenly between the
+              images. The background-position property is ignored unless only one image can be displayed
+              without clipping. The only case where clipping happens using space is when there isn't enough
+              room to display one image.
+            - round: As the allowed space increases in size, the repeated images will stretch (leaving no gaps)
+              until there is room (space left >= half of the image width) for another one to be added. When the
+              next image is added, all of the current ones compress to allow room. Example: An image with an
+              original width of 260px, repeated three times, might stretch until each repetition is 300px wide,
+              and then another image will be added. They will then compress to 225px.
+            - no-repeat: The image is not repeat (and hence the background image painting area will not necessarily
+              be entirely covered). The position of the non-repeated background image is defined by the background-position CSS property.
+    */
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: local;
     border: 5px dashed rgba(0, 0, 0, .15);
-    background-clip: content-box;
+
+    /* 
+     * The background-clip CSS property sets whether an element's background extends underneath
+       its border box, padding box or content box.
+    */
+
     /* 
         当前只是静态的文字可以显示为背景色 文字滚动时文字不会变化
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
     */
+    background-clip: content-box;
+
+    /* 
+     * The background-origin CSS property sets the background's origin: from the border start, inside
+       the border, or inside the padding.
+       !Note! Note that background-origin is ignored when the background-attachment is fixed.
+    */
+    background-origin: content-box;
 }
 .background-text {
     backdrop-filter: blur(5px);
+}
+/* 当背景为图片时，设置图片原点；当背景为渐变时，与background-clip效果相同（实践所得，不确定是否正确） */
+.background-origin {
+    margin: auto;
+    margin-top: 32px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.6) 60%, rgba(252,176,69,1) 100%), 
+    radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 28%);
+    border: 20px dashed black;
+    padding: 20px;
+    width: 400px;
+    background-origin: padding-box, content-box;
+    background-repeat: no-repeat;
 }
