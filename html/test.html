@@ -243,11 +243,31 @@
                 </p>
             </div>
         </div>
+        <button id="remove-hello">Remove 'Hello'.</button>
+        <button id="modify-subtree">Modify subTree.</button>
+        <button id="modify-attribute">Modify attribute.</button>
         <div class="background-origin">
             Hello!
         </div>
 
 
         <script src="../js/test.js"></script>
+        <script>
+            // 用于探索浏览器开发者工具中，ELements中breakOn的使用
+            let modifiedEl = document.querySelector('.background-origin');
+
+            let subSpan = document.createElement('span');
+            subSpan.innerHTML = 'World!'
+
+            document.getElementById('remove-hello').addEventListener('click', () => {
+                modifiedEl.remove();
+            });
+            document.getElementById('modify-subtree').addEventListener('click', () => {
+                modifiedEl.append(subSpan);
+            });
+            document.getElementById('modify-attribute').addEventListener('click', () => {
+                modifiedEl.style = "font-size: 24px";
+            });
+        </script>
     </body>
 </html>

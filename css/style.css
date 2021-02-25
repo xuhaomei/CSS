@@ -446,6 +446,12 @@
        !Note! Note that background-origin is ignored when the background-attachment is fixed.
     */
     background-origin: content-box;
+
+    /*
+     * The background-blend-mode CSS property sets how an element's background images should blend with
+       each other and with the element's background color.
+    */
+    background-blend-mode: multiply;
 }
 .background-text {
     backdrop-filter: blur(5px);
