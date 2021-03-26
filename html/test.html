@@ -81,6 +81,8 @@
                                  - If the header specifies a disposition of inline, Chrome, and Firefox 82 and later, priorities the attribute
                                  and treat it as a download. Firefox versions before 82 prioritize the header and display the content inline.
             -->
+            <!-- 直接a标签下载限制很多 如果需要下载图片可将图片使用canvas转为blob后再使用a标签下载 -->
+            <a href="http://172.25.21.29:8088/g1/M00/00012001/20210302/rBkVHWA-Ge6IHHNnAABQMe0eY4kAAAuDwGYlhoAAFBJ111.jpg" download="mdn-info2">图片下载</a>
             <a class="any-link-a" href="tel:13212312322">link-tel</a>
             <a class="any-link-a" href="mailto:2656593403@qq.com" hreflang="en">link-email</a>
 
@@ -249,6 +251,7 @@
         <div class="background-origin">
             Hello!
         </div>
+        <div class="background-repeat"></div>
 
 
         <script src="../js/test.js"></script>

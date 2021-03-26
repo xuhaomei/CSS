@@ -46,7 +46,8 @@
 
 
 .replaced-element-img {
-    width: 100%;
+    width: 500px;
+    height: 500px;
     object-fit: none;
     object-position: 50% 50%;
 }
@@ -88,8 +89,8 @@
                 on the value of animation-direction.
     * both: The animation will follow the rules for both backwards and forwards, thus extending the
             animation properties in both directions.
- * animation-iteration-count
- * animation-name: [none | slide | bounce | <custom-ident>]
+ * animation-iteration-count: [infinite | <number>]
+ * animation-name: [none | <custom-ident>]
  * animation-play-state: sets whether an animation is running or paused. [running | paused]
  * animation-timing-function: Timing functions may be specified on individual keyframes in a @keyframes rule.
    If no animation-timing-function is specified on a keyframe, the corresponding value of animation-timing-function
@@ -111,6 +112,8 @@
     * step-end: Same as steps(0, jump-end). */
 @keyframes slidein {
     from {
+        /* In this @keyframes rule, timing function is specified. */
+        /* animation-timing-function: ease-in; 貌似会造成动画的卡顿 */
         /* some rules */
         margin-left: 0;
         background-image: linear-gradient(#e66465, #9198e5);
@@ -139,7 +142,7 @@
     background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
                 linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
                 linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
-    animation: 3s alternate 1s both 3 slidein ease-in;
+    animation: 3s alternate 1s both 3 slidein linear;
 }
 
 /*
@@ -147,7 +150,7 @@
  * a value that can be used in other declarations using the var() function.
  * Custom property names are case sensitive, --my-color will be treated as a separate custom property to --My-color. */
 /* 
- * The paragraph color will not be blur because invalid substitution is replaced by the initial value,
+ * The paragraph color will not be blue because invalid substitution is replaced by the initial value,
  * not by the fallback. If you had written _color:16px_ without variable substitutes, then it
  * was a syntax error. The previous declaration will then be used. */
 .custom-properties {
@@ -157,8 +160,24 @@
     color: blue;
 }
 .custom-properties-item {
-    /* color: var(--text-color); */
-    color: 16px;
+    /* 使用var的第二个参数作为自定义属性不存在时的fallback */
+    color: var(--text-color, #ffa);
+    /* 使用calc()可对自定义属性进行计算，例如： 
+
+     * --indent-size: 10px;
+     * --indent-xs: calc(var(--indent-size)/2);
+
+     如果使用了非单位数值，需结合使用calc()，例如：
+     
+        :root{
+            --gap: 10;
+        }
+        .box{
+            padding: var(--spacer)px 0; // DOESN'T WORK
+            padding: calc(var(--spacer)*1px) 0; // IT WORKS
+        }
+    */
+    /* color: 16px; */
 }
 
 
@@ -182,7 +201,7 @@
     height: 232px;
 }
 
-
+/* 看不到什么明显效果 */
 .appearance-button {
     appearance: auto;
 }
@@ -229,7 +248,7 @@
     line-height: 40px;
     backdrop-filter: blur(5px);
 }
-
+/* A + B直接兄弟元素 A ~ B兄弟元素(A在前) A > B直接子元素  */
 
 .backface-visibility {
     margin: auto;
@@ -468,4 +487,9 @@
     width: 400px;
     background-origin: padding-box, content-box;
     background-repeat: no-repeat;
+}
+.background-repeat {
+    height: 600px;
+    /* 在background-repeat为round的情况下 没有图片会被裁剪 只是有可能会被拉伸 */
+    background: url('../assets/mdn-info2.png') round repeat;
 }
