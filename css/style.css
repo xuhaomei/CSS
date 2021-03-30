@@ -352,7 +352,7 @@
         - <position>
         - <bg-size>
         - <repeat-style>
-    * The <ba-size> value may only be include immediately after <position>, separated with the '/'
+    * The <bg-size> value may only be include immediately after <position>, separated with the '/'
       character, like this: "center/80%".
     * The <box> value may be included zero, one, or two times. If included once, it sets both background-origin
       and background-clip. If it is included twice, the first occurrence sets <background-origin>, and the second
@@ -493,3 +493,111 @@
     /* 在background-repeat为round的情况下 没有图片会被裁剪 只是有可能会被拉伸 */
     background: url('../assets/mdn-info2.png') round repeat;
 }
+
+
+/* <basic-shape> CSS data type represents a shape used in the clip-path, shape-outside, and
+   offset-path properties.
+*/
+.basic-shape-box {
+    width: 300px;
+    margin: auto;
+    aspect-ratio: 1 / 1;
+    background: repeating-linear-gradient(red, orange 50px);
+    clip-path: circle(100px);
+}
+
+
+/* The block-size CSS property defines the horizontal or vertical size of an element's block,
+   depending on its writing mode. 
+*/
+.block-size-box {
+    background-color: #3f87a6;
+    block-size: 150px;
+    writing-mode: vertical-lr;
+}
+
+
+/* borders vs outlines
+    Borders and outlines are very similar. However, outlines differ from borders in the following
+    ways:
+        - Outlines never take up space, as they are drawn outsize of an element's content.
+        - According to the spec, outlines don't have to be rectangular, although they usually are.
+*/
+
+/* 
+    The border-block CSS property is a shorthand property for setting the individual logical
+    block border property values in a single place in the style sheet.
+    Border-block can be used to set the values for one or more of border-block-width, border-block-
+    style, and border-block-color setting both the start and end in the block dimension at once.
+    The border in the other dimension can be set with border-inline, which sets border-inline-start,
+    and border-inline-end.
+*/
+
+/* 
+    The border-collapse CSS property sets whether cells inside a <table> have shared or separate borders.
+    border-collapse: [ collapse | separate ]
+    When cells are collapsed, the border-style value of inset behaves like groove, and outset behaves like ridge.
+    When cells are separated, the distance between cells is defined by the border-spacing property.
+*/
+
+/* 
+    The border-image CSS property draws an image around a given element. It replaced the element's regular border.
+    You should specify a separate border-style in case the border image fails in load.
+    The property is shorthand for the following CSS properties:
+        - border-image-outset: The border-image-outset CSS property sets the distance by which an element's border-image
+            is set out from its border box. The parts of the border image that are rendered outside the element's
+            border box with border-image-outset do not trigger overflow scrollbars and don't capture mouse events.
+            -- Values
+                - <length>: The size of the border-image outset as a dimension -- a number with a unit.
+                - <number>: The size of the border-image outset as a multiple of the corresponding border-widths.
+                    For example, if an element has border-width: 1em 2px 0 1.5rem, and border-image-outset: 2,the final
+                    border-image-outset would be calculated as 2em 4px 0 3rem.
+        - border-image-repeat
+        - border-image-slice: The slicing process creates nine regions: four corners, four edges, and a middle region.
+            Four slice lines, set a given distance from their respective sides, control the size of the regions.
+            -- Values
+                - <number>: Represents an edge offset in pixels for raster images and coordinates for vector images.
+                    For vector images, the number is relative to the element's size, not the size of the source image,
+                    so percentages are preferable in these cases.
+                - <percentage>: Represents an edge offset as a percentage of the source image's size: the width of the
+                    image for horizontal offsets, the height for vertical offsets.
+                - fill: Preserves the middle image region and displays it like a background image, but stacked above
+                    the actual background. Its width and height is sized to match the top and left image regions,
+                    respectively.
+        - border-image-source
+        - border-image-width
+    The border-image property may be specified with anywhere from one to five of the value listed below.
+    If the computed value of border-image-source is none, or if the image can be displayed, the border-style will be displayed instead.
+*/
+.example-style-sheet {
+    /* source | slice */
+    border-image: linear-gradient(red, blue) 27;
+    
+    /* source | slice | repeat */
+    border-image: url("/images/border.png") 27 space;
+    
+    /* source | slice | width */
+    border-image: linear-gradient(red, blue) 27 / 35px;
+    
+    /* source | slice | width | outset | repeat */
+    border-image: url("/images/border.png") 27 23 / 50px 30px / 1rem round space;
+
+    border-image:
+      url("https://mdn.mozillademos.org/files/4127/border.png")  /* source */
+      27 /                    /* slice (up to four values) */
+      36px 28px 18px 8px /    /* width (up to four values) */
+      18px 14px 9px 4px       /* outset (up to four values) */
+      round;                  /* repeat (up to two values) */
+}
+.border-image-box {
+    margin: auto;
+    aspect-ratio: 1 / 1;
+    width: 300px;
+    border-style: solid;
+    border-image: url("../assets/border-diamonds.png") 30 fill / 30px round;
+}
+
+/*
+    The border-spacing CSS property sets the distance between the borders of adjacent <table> cells.
+    This property applies only when border-collapse is separate.
+*/
